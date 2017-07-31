@@ -1,5 +1,6 @@
 <?php
-function my_theme_enqueue_styles() {
+
+function eazel_enqueue_styles() {
 
     $parent_style = 'sketch-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
 
@@ -10,5 +11,11 @@ function my_theme_enqueue_styles() {
         wp_get_theme()->get('Version')
     );
 }
-add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'eazel_enqueue_styles' );
+
+function eazel_post_formats(){
+     add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'status', 'image', 'quote' ) );
+}
+add_action( 'after_setup_theme', 'eazel_post_formats', 11 );
+
 ?>
