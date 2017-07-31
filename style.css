@@ -11,3 +11,14 @@
  Tags:         
  Text Domain:  sketch-child
 */
+
+ 
+.docutils.field-list {
+  display: none;
+}
+ 
+.format-status .entry-header header > h1,
+.format-status .entry-header img.avatar {
+  display: none;
+}
+ 
