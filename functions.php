@@ -29,23 +29,24 @@ function eazel_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'prints_title', array(
-        'type' => 'theme_mod', // or 'option'
-        'capability' => 'edit_theme_options',
-        'theme_supports' => '', // Rarely needed.
         'default' => 'Prints',
-        'transport' => 'refresh', // or postMessage
-        'sanitize_callback' => '',
-        'sanitize_js_callback' => '', // Basically to_json.
     ) );
-
     $wp_customize->add_control( 'prints_title', array(
-        'type' => 'text',
-        'priority' => 10, // Within the section.
-        'section' => 'prints', // Required, core or custom.
+        'section' => 'prints',
         'label' => __( 'Archive Title' ),
-        'description' => __( 'XXX.' ),
+        'description' => __( 'Page title for Print Archive page(s)' ),
       ) );
-}
+
+    $wp_customize->add_setting( 'prints_content', array(
+        'default' => '',
+    ) );
+    $wp_customize->add_control( 'prints_content', array(
+        'section' => 'prints',
+        'label' => __( 'Archive Content' ),
+        'description' => __( 'Page content for Print Archive page.' ),
+        'type' => 'textarea',
+    ) );
+    }
 add_action( 'customize_register', 'eazel_customize_register' );
 
 ?>
