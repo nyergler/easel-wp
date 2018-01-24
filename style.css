@@ -5,7 +5,7 @@
  Author:       Nathan Yergler.
  Author URI:   https://yergler.net
  Template:     sketch
- Version:      1.0.1
+ Version:      1.0.2
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags:
@@ -30,16 +30,22 @@
   list-style: none !important;
 }
 
-body[class*="print"].archive .site-header {
+body[class*="print"].archive .site-header,
+body[class*="work_medium"].archive .site-header,
+body[class*="series"].archive .site-header,
+{
   margin-bottom: 14px;
 }
 
-.page-template-fullwidth-page-php .site-content,
-.page-template-fullwidth-page-php .content-area,
-.page-template-fullwidth-page-php .site-main,
 body[class*="print"] .site-content,
 body[class*="print"] .content-area,
 body[class*="print"] .site-main,
+body[class*="work_medium"] .site-content,
+body[class*="work_medium"] .content-area,
+body[class*="work_medium"] .site-main,
+body[class*="series"] .site-content,
+body[class*="series"] .content-area,
+body[class*="series"] .site-main,
 .no-sidebar .site-content,
 .no-sidebar .content-area,
 .no-sidebar .site-main {
@@ -64,20 +70,28 @@ body[class*="print"] .site-main,
 .page-template-portfolio-template-php .page-content:before,
 .page-template-portfolio-template-php .page-content:after,
 body[class*="print"].archive .page-content:before,
-body[class*="print"].archive .page-content:after {
+body[class*="print"].archive .page-content:after,
+body[class*="work_medium"].archive .page-content:before,
+body[class*="work_medium"].archive .page-content:after,
+body[class*="series"].archive .page-content:before,
+body[class*="series"].archive .page-content:after {
   content: "";
   display: table;
 }
 .page-template-portfolio-page-php .page-content:after,
 .project-navigation-wrapper .page-content:after,
 .page-template-portfolio-template-php .page-content:after,
-body[class*="print"].archive .page-content:after {
+body[class*="print"].archive .page-content:after,
+body[class*="work_medium"].archive .page-content:after,
+body[class*="series"].archive .page-content:after {
   clear: both;
 }
 .page-template-portfolio-page-php .page-content,
 .project-navigation-wrapper .page-content,
 .page-template-portfolio-template-php .page-content,
-body[class*="print"].archive .page-content {
+body[class*="print"].archive .page-content,
+body[class*="work_medium"].archive .page-content,
+body[class*="series"].archive .page-content {
   border-bottom: 3px solid #eeeeee;
   margin-bottom: 24px;
   padding-bottom: 27px;
@@ -85,14 +99,18 @@ body[class*="print"].archive .page-content {
 .page-template-portfolio-page-php .projects,
 .project-navigation-wrapper .projects,
 .page-template-portfolio-template-php .projects,
-body[class*="print"].archive .projects {
+body[class*="print"].archive .projects,
+body[class*="work_medium"].archive .projects,
+body[class*="series"].archive .projects {
   clear: both;
   width: 100%;
 }
 .page-template-portfolio-page-php .entry-thumbnail,
 .project-navigation-wrapper .entry-thumbnail,
 .page-template-portfolio-template-php .entry-thumbnail,
-body[class*="print"].archive .entry-thumbnail {
+body[class*="print"].archive .entry-thumbnail,
+body[class*="work_medium"].archive .entry-thumbnail,
+body[class*="series"].archive .entry-thumbnail {
   border-radius: 3px;
   display: block;
   width: 100%;
@@ -100,13 +118,17 @@ body[class*="print"].archive .entry-thumbnail {
 .page-template-portfolio-page-php .entry-thumbnail.no-thumbnail,
 .project-navigation-wrapper .entry-thumbnail.no-thumbnail,
 .page-template-portfolio-template-php .entry-thumbnail.no-thumbnail,
-body[class*="print"].archive .entry-thumbnail.no-thumbnail {
+body[class*="print"].archive .entry-thumbnail.no-thumbnail,
+body[class*="work_medium"].archive .entry-thumbnail.no-thumbnail,
+body[class*="series"].archive .entry-thumbnail.no-thumbnail {
   background: #eeeeee;
 }
 .page-template-portfolio-page-php .entry-thumbnail .edit-link a,
 .project-navigation-wrapper .entry-thumbnail .edit-link a,
 .page-template-portfolio-template-php .entry-thumbnail .edit-link a,
-body[class*="print"].archive .entry-thumbnail .edit-link a {
+body[class*="print"].archive .entry-thumbnail .edit-link a,
+body[class*="work_medium"].archive .entry-thumbnail .edit-link a,
+body[class*="series"].archive .entry-thumbnail .edit-link a {
   font-size: 0.8125em;
   line-height: 2.09231em;
   background: white;
@@ -139,13 +161,21 @@ body[class*="print"].archive .entry-thumbnail .edit-link a {
 .page-template-portfolio-template-php .site-main,
 body[class*="print"].archive .site-content,
 body[class*="print"].archive .content-area,
-body[class*="print"].archive .site-main {
+body[class*="print"].archive .site-main,
+body[class*="work_medium"].archive .site-content,
+body[class*="work_medium"].archive .content-area,
+body[class*="work_medium"].archive .site-main,
+body[class*="series"].archive .site-content,
+body[class*="series"].archive .content-area,
+body[class*="series"].archive .site-main {
   margin: 0 auto;
 }
 .page-template-portfolio-page-php .print,
 .project-navigation-wrapper .print,
 .page-template-portfolio-template-php .print,
-body[class*="print"].archive .print {
+body[class*="print"].archive .print,
+body[class*="work_medium"].archive .print,
+body[class*="series"].archive .print {
   list-style: none;
   margin-bottom: 14px;
   opacity: 1;
@@ -159,7 +189,9 @@ body[class*="print"].archive .print {
 .project-navigation-wrapper .print img,
 .page-template-portfolio-template-php .print img,
 .print-shortcode .portfolio-featured-image img,
-body[class*="print"].archive .print img {
+body[class*="print"].archive .print img,
+body[class*="work_medium"].archive .print img,
+body[class*="series"].archive .print img {
   border-radius: 3px;
   display: block;
   margin: 0 auto;
@@ -167,7 +199,9 @@ body[class*="print"].archive .print img {
 .page-template-portfolio-page-php .print:hover,
 .project-navigation-wrapper .print:hover,
 .page-template-portfolio-template-php .print:hover,
-body[class*="print"].archive .print:hover {
+body[class*="print"].archive .print:hover,
+body[class*="work_medium"].archive .print:hover,
+body[class*="series"].archive .print:hover {
   opacity: 0.7;
   -webkit-transition: opacity 0.3s ease-in-out;
   -moz-transition: opacity 0.3s ease-in-out;
@@ -177,13 +211,17 @@ body[class*="print"].archive .print:hover {
 .page-template-portfolio-page-php .print:hover a,
 .project-navigation-wrapper .print:hover a,
 .page-template-portfolio-template-php .print:hover a,
-body[class*="print"].archive .print:hover a {
+body[class*="print"].archive .print:hover a,
+body[class*="work_medium"].archive .print:hover a,
+body[class*="series"].archive .print:hover a {
   color: #f68060;
 }
 .page-template-portfolio-page-php .print:hover .edit-link a,
 .project-navigation-wrapper .print:hover .edit-link a,
 .page-template-portfolio-template-php .print:hover .edit-link a,
-body[class*="print"].archive .print:hover .edit-link a {
+body[class*="print"].archive .print:hover .edit-link a,
+body[class*="work_medium"].archive .print:hover .edit-link a,
+body[class*="series"].archive .print:hover .edit-link a {
   color: #999999;
   opacity: 1;
   visibility: visible;
@@ -207,7 +245,15 @@ body[class*="print"].archive .print:hover .edit-link a {
 body[class*="print"].archive .portfolio-entry-title,
 body[class*="print"].archive .portfolio-entry-meta,
 body[class*="print"].archive .entry-title,
-body[class*="print"].archive .entry-meta {
+body[class*="print"].archive .entry-meta,
+body[class*="work_medium"].archive .portfolio-entry-title,
+body[class*="work_medium"].archive .portfolio-entry-meta,
+body[class*="work_medium"].archive .entry-title,
+body[class*="work_medium"].archive .entry-meta,
+body[class*="series"].archive .portfolio-entry-title,
+body[class*="series"].archive .portfolio-entry-meta,
+body[class*="series"].archive .entry-title,
+body[class*="series"].archive .entry-meta {
   font-size: 0.8125em;
   line-height: 1.546em;
   letter-spacing: 1px;
@@ -222,20 +268,28 @@ body[class*="print"].archive .entry-meta {
 .project-navigation-wrapper .flexslider .print:hover,
 .page-template-portfolio-template-php .flexslider .print:hover,
 body[class*="print"].archive .flexslider .print:hover,
+body[class*="work_medium"].archive .flexslider .print:hover,
+body[class*="series"].archive .flexslider .print:hover,
 .page-template-portfolio-page-php .flexslider .print:hover .attachment-sketch-featured,
 .project-navigation-wrapper .flexslider .print:hover .attachment-sketch-featured,
 .page-template-portfolio-template-php .flexslider .print:hover .attachment-sketch-featured,
-body[class*="print"].archive .flexslider .print:hover .attachment-sketch-featured {
+body[class*="print"].archive .flexslider .print:hover .attachment-sketch-featured,
+body[class*="work_medium"].archive .flexslider .print:hover .attachment-sketch-featured,
+body[class*="series"].archive .flexslider .print:hover .attachment-sketch-featured {
 	opacity: 1;
 }
 .page-template-portfolio-page-php .flexslider .print .entry-meta a,
 .project-navigation-wrapper .flexslider .print .entry-meta a,
 .page-template-portfolio-template-php .flexslider .print .entry-meta a,
 body[class*="print"].archive .flexslider .print .entry-meta a,
+body[class*="work_medium"].archive .flexslider .print .entry-meta a,
+body[class*="series"].archive .flexslider .print .entry-meta a,
 .page-template-portfolio-page-php .flexslider .print:hover .entry-meta a,
 .project-navigation-wrapper .flexslider .print:hover .entry-meta a,
 .page-template-portfolio-template-php .flexslider .print:hover .entry-meta a,
-body[class*="print"].archive .flexslider .print:hover .entry-meta a {
+body[class*="print"].archive .flexslider .print:hover .entry-meta a,
+body[class*="work_medium"].archive .flexslider .print:hover .entry-meta a,
+body[class*="series"].archive .flexslider .print:hover .entry-meta a {
 	color: rgba(255,255,255,0.7);
 }
 
@@ -243,7 +297,9 @@ body[class*="print"].archive .flexslider .print:hover .entry-meta a {
 
 .project-navigation-wrapper .print,
 .page-template-portfolio-page-php .print,
-body[class*="print"].archive .print {
+body[class*="print"].archive .print,
+body[class*="work_medium"].archive .print,
+body[class*="series"].archive .print {
   border: 0;
   float: left;
   margin-right: 2%;
@@ -251,13 +307,17 @@ body[class*="print"].archive .print {
 }
 .project-navigation-wrapper .print:nth-of-type(3n),
 .page-template-portfolio-page-php .print:nth-of-type(3n),
-body[class*="print"].archive .print:nth-of-type(3n) {
+body[class*="print"].archive .print:nth-of-type(3n),
+body[class*="work_medium"].archive .print:nth-of-type(3n),
+body[class*="series"].archive .print:nth-of-type(3n) {
   clear: right;
   margin-right: 0;
 }
 .project-navigation-wrapper .print:nth-of-type(3n+1),
 .page-template-portfolio-page-php .print:nth-of-type(3n+1),
-body[class*="print"].archive .print:nth-of-type(3n+1) {
+body[class*="print"].archive .print:nth-of-type(3n+1),
+body[class*="work_medium"].archive .print:nth-of-type(3n+1),
+body[class*="series"].archive .print:nth-of-type(3n+1) {
   clear: left;
 }
 
@@ -268,7 +328,9 @@ body[class*="print"].archive .print:nth-of-type(3n+1) {
 }
 .project-navigation-wrapper .entry-thumbnail,
 .page-template-portfolio-page-php .entry-thumbnail,
-body[class*="print"].archive .entry-thumbnail {
+body[class*="print"].archive .entry-thumbnail,
+body[class*="work_medium"].archive .entry-thumbnail,
+body[class*="series"].archive .entry-thumbnail {
   height: 0;
   overflow: hidden;
   padding-top: 75%;
@@ -276,24 +338,32 @@ body[class*="print"].archive .entry-thumbnail {
 }
 .project-navigation-wrapper .entry-thumbnail img,
 .page-template-portfolio-page-php .entry-thumbnail img,
-body[class*="print"].archive .entry-thumbnail img {
+body[class*="print"].archive .entry-thumbnail img,
+body[class*="work_medium"].archive .entry-thumbnail img,
+body[class*="series"].archive .entry-thumbnail img {
   position: absolute;
   top: 0;
   left: 0;
 }
 .project-navigation-wrapper .entry-thumbnail.sketch-landscape,
 .page-template-portfolio-page-php .entry-thumbnail.sketch-landscape,
-body[class*="print"].archive .entry-thumbnail.sketch-landscape {
+body[class*="print"].archive .entry-thumbnail.sketch-landscape,
+body[class*="work_medium"].archive .entry-thumbnail.sketch-landscape,
+body[class*="series"].archive .entry-thumbnail.sketch-landscape {
   padding-top: 75%;
 }
 .project-navigation-wrapper .entry-thumbnail.sketch-portrait,
 .page-template-portfolio-page-php .entry-thumbnail.sketch-portrait,
-body[class*="print"].archive .entry-thumbnail.sketch-portrait {
+body[class*="print"].archive .entry-thumbnail.sketch-portrait,
+body[class*="work_medium"].archive .entry-thumbnail.sketch-portrait,
+body[class*="series"].archive .entry-thumbnail.sketch-portrait {
   padding-top: 133.333%;
 }
 .project-navigation-wrapper .entry-thumbnail.sketch-square,
 .page-template-portfolio-page-php .entry-thumbnail.sketch-square,
-body[class*="print"].archive .entry-thumbnail.sketch-square {
+body[class*="print"].archive .entry-thumbnail.sketch-square,
+body[class*="work_medium"].archive .entry-thumbnail.sketch-square,
+body[class*="series"].archive .entry-thumbnail.sketch-square {
   padding-top: 100%;
 }
 
@@ -313,7 +383,9 @@ body[class*="print"].archive .entry-thumbnail.sketch-square {
   .page-template-portfolio-page-php .entry-thumbnail .edit-link a,
   .project-navigation-wrapper .entry-thumbnail .edit-link a,
   .page-template-portfolio-template-php .entry-thumbnail .edit-link a,
-  body[class*="print"].archive .entry-thumbnail .edit-link a {
+  body[class*="print"].archive .entry-thumbnail .edit-link a,
+  body[class*="work_medium"].archive .entry-thumbnail .edit-link a,
+  body[class*="series"].archive .entry-thumbnail .edit-link a {
   	bottom: 14px;
   	top: auto;
   }
