@@ -14,7 +14,7 @@ get_header(); ?>
 
             <header class="page-header">
                 <h1 class="page-title">
-                    <a href="<?php wp_get_archives(array('post_type'=>'print', 'type'=>'postbypost', 'format'=>'custom')); ?>">Prints</a> &raquo; '
+                    <a href="<?php get_post_type_archive_link( 'print' ); ?>">Prints</a> &raquo;
                     <?php single_term_title(); ?>
                 </h1>
             </header>
