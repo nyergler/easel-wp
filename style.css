@@ -23,10 +23,11 @@
 }
 
 .single-print .entry-meta {
+  float: left;
 }
 
 .single-print .entry-meta ul {
-  list-style: none;
+  list-style: none !important;
 }
 
 body[class*="print"].archive .site-header {
