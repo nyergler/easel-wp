@@ -2,7 +2,7 @@
 
 function eazel_enqueue_styles() {
 
-    $parent_style = 'sketch-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
+    $parent_style = 'sketch-style';
 
     wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'eazel-style',
@@ -10,6 +10,10 @@ function eazel_enqueue_styles() {
         array( $parent_style ),
         wp_get_theme()->get('Version')
     );
+
+    if ( is_post_type_archive( 'print' ) || is_tax( 'jetpack-portfolio-type' ) || is_tax( 'jetpack-portfolio-tag' ) ) {
+        wp_enqueue_script( 'sketch-portfolio', get_template_directory_uri() . '/js/portfolio.js', array( 'jquery' ), '20150708', true );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'eazel_enqueue_styles' );
 
