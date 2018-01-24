@@ -26,14 +26,14 @@ get_header(); ?>
 				<?php
 				function term_name($t)
 				{
-					return $t->$name;
+					return $t->name;
 				}
 
 				?>
-				<li><?php echo join(', ', get_field('artist')); ?></li>
-				<li><?php echo get_field('year'); ?></li>
-				<li><?php echo get_field('dimensions'); ?></li>
-				<li><?php echo join(', ', array_map(term_name, get_field('medium'))); ?></li>
+				<li><?php echo get_field('artist')->display_name; ?></li>
+				<li><?php the_field('year'); ?></li>
+				<li><?php the_field('dimensions'); ?></li>
+				<li><?php echo get_field('medium')->name; ?></li>
 			</ul>
 			<?php edit_post_link( __( 'Edit', 'sketch' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 		</div><!-- .entry-meta -->
