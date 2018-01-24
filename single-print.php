@@ -25,8 +25,8 @@ get_header(); ?>
 			<ul>
 				<li><?php echo get_field('artist'); ?></li>
 				<li><?php echo get_field('year'); ?></li>
-				<li><?php echo get_field('medium'); ?></li>
 				<li><?php echo get_field('dimension'); ?></li>
+				<li><?php echo join(', ', get_field('medium')); ?></li>
 			</ul>
 			<?php edit_post_link( __( 'Edit', 'sketch' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 		</div><!-- .entry-meta -->
