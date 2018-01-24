@@ -8,17 +8,306 @@
  Version:      1.0.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
- Tags:         
+ Tags:
  Text Domain:  sketch-child
 */
 
- 
+
 .docutils.field-list {
   display: none;
 }
- 
+
 .format-status .entry-header header > h1,
 .format-status .entry-header img.avatar {
   display: none;
 }
- 
+
+
+body[class*="print"].archive .site-header {
+  margin-bottom: 14px;
+}
+
+.page-template-fullwidth-page-php .site-content,
+.page-template-fullwidth-page-php .content-area,
+.page-template-fullwidth-page-php .site-main,
+body[class*="print"] .site-content,
+body[class*="print"] .content-area,
+body[class*="print"] .site-main,
+.no-sidebar .site-content,
+.no-sidebar .content-area,
+.no-sidebar .site-main {
+  margin: 0 auto;
+}
+
+.single-print .content-area,
+.single-print .site-main {
+  float: none;
+  margin: 0 auto;
+}
+.portfolio-featured-image img,
+.single-print .entry-thumbnail img {
+  display: block;
+  margin: 0 auto 27px;
+}
+
+.page-template-portfolio-page-php .page-content:before,
+.page-template-portfolio-page-php .page-content:after,
+.project-navigation-wrapper .page-content:before,
+.project-navigation-wrapper .page-content:after,
+.page-template-portfolio-template-php .page-content:before,
+.page-template-portfolio-template-php .page-content:after,
+body[class*="print"].archive .page-content:before,
+body[class*="print"].archive .page-content:after {
+  content: "";
+  display: table;
+}
+.page-template-portfolio-page-php .page-content:after,
+.project-navigation-wrapper .page-content:after,
+.page-template-portfolio-template-php .page-content:after,
+body[class*="print"].archive .page-content:after {
+  clear: both;
+}
+.page-template-portfolio-page-php .page-content,
+.project-navigation-wrapper .page-content,
+.page-template-portfolio-template-php .page-content,
+body[class*="print"].archive .page-content {
+  border-bottom: 3px solid #eeeeee;
+  margin-bottom: 24px;
+  padding-bottom: 27px;
+}
+.page-template-portfolio-page-php .projects,
+.project-navigation-wrapper .projects,
+.page-template-portfolio-template-php .projects,
+body[class*="print"].archive .projects {
+  clear: both;
+  width: 100%;
+}
+.page-template-portfolio-page-php .entry-thumbnail,
+.project-navigation-wrapper .entry-thumbnail,
+.page-template-portfolio-template-php .entry-thumbnail,
+body[class*="print"].archive .entry-thumbnail {
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+}
+.page-template-portfolio-page-php .entry-thumbnail.no-thumbnail,
+.project-navigation-wrapper .entry-thumbnail.no-thumbnail,
+.page-template-portfolio-template-php .entry-thumbnail.no-thumbnail,
+body[class*="print"].archive .entry-thumbnail.no-thumbnail {
+  background: #eeeeee;
+}
+.page-template-portfolio-page-php .entry-thumbnail .edit-link a,
+.project-navigation-wrapper .entry-thumbnail .edit-link a,
+.page-template-portfolio-template-php .entry-thumbnail .edit-link a,
+body[class*="print"].archive .entry-thumbnail .edit-link a {
+  font-size: 0.8125em;
+  line-height: 2.09231em;
+  background: white;
+  border: 1px solid #eeeeee;
+  border-radius: 3px;
+  color: #999999;
+  display: block;
+  font-weight: normal;
+  letter-spacing: 1px;
+  opacity: 0;
+  padding: 0 5px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  text-transform: uppercase;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.page-template-portfolio-page-php .site-content,
+.page-template-portfolio-page-php .content-area,
+.page-template-portfolio-page-php .site-main,
+.project-navigation-wrapper .site-content,
+.project-navigation-wrapper .content-area,
+.project-navigation-wrapper .site-main,
+.page-template-portfolio-template-php .site-content,
+.page-template-portfolio-template-php .content-area,
+.page-template-portfolio-template-php .site-main,
+body[class*="print"].archive .site-content,
+body[class*="print"].archive .content-area,
+body[class*="print"].archive .site-main {
+  margin: 0 auto;
+}
+.page-template-portfolio-page-php .print,
+.project-navigation-wrapper .print,
+.page-template-portfolio-template-php .print,
+body[class*="print"].archive .print {
+  list-style: none;
+  margin-bottom: 14px;
+  opacity: 1;
+  padding: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.page-template-portfolio-page-php .print img,
+.project-navigation-wrapper .print img,
+.page-template-portfolio-template-php .print img,
+.print-shortcode .portfolio-featured-image img,
+body[class*="print"].archive .print img {
+  border-radius: 3px;
+  display: block;
+  margin: 0 auto;
+}
+.page-template-portfolio-page-php .print:hover,
+.project-navigation-wrapper .print:hover,
+.page-template-portfolio-template-php .print:hover,
+body[class*="print"].archive .print:hover {
+  opacity: 0.7;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.page-template-portfolio-page-php .print:hover a,
+.project-navigation-wrapper .print:hover a,
+.page-template-portfolio-template-php .print:hover a,
+body[class*="print"].archive .print:hover a {
+  color: #f68060;
+}
+.page-template-portfolio-page-php .print:hover .edit-link a,
+.project-navigation-wrapper .print:hover .edit-link a,
+.page-template-portfolio-template-php .print:hover .edit-link a,
+body[class*="print"].archive .print:hover .edit-link a {
+  color: #999999;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.page-template-portfolio-page-php .portfolio-entry-title,
+.page-template-portfolio-page-php .portfolio-entry-meta,
+.page-template-portfolio-page-php .entry-title,
+.page-template-portfolio-page-php .entry-meta,
+.project-navigation-wrapper .portfolio-entry-title,
+.project-navigation-wrapper .portfolio-entry-meta,
+.project-navigation-wrapper .entry-title,
+.project-navigation-wrapper .entry-meta,
+.page-template-portfolio-template-php .portfolio-entry-title,
+.page-template-portfolio-template-php .portfolio-entry-meta,
+.page-template-portfolio-template-php .entry-title,
+.page-template-portfolio-template-php .entry-meta,
+body[class*="print"].archive .portfolio-entry-title,
+body[class*="print"].archive .portfolio-entry-meta,
+body[class*="print"].archive .entry-title,
+body[class*="print"].archive .entry-meta {
+  font-size: 0.8125em;
+  line-height: 1.546em;
+  letter-spacing: 1px;
+  margin: 14px 0;
+  text-align: center;
+}
+.portfolio-entry-content {
+	margin: 0 0 27px;
+}
+
+.page-template-portfolio-page-php .flexslider .print:hover,
+.project-navigation-wrapper .flexslider .print:hover,
+.page-template-portfolio-template-php .flexslider .print:hover,
+body[class*="print"].archive .flexslider .print:hover,
+.page-template-portfolio-page-php .flexslider .print:hover .attachment-sketch-featured,
+.project-navigation-wrapper .flexslider .print:hover .attachment-sketch-featured,
+.page-template-portfolio-template-php .flexslider .print:hover .attachment-sketch-featured,
+body[class*="print"].archive .flexslider .print:hover .attachment-sketch-featured {
+	opacity: 1;
+}
+.page-template-portfolio-page-php .flexslider .print .entry-meta a,
+.project-navigation-wrapper .flexslider .print .entry-meta a,
+.page-template-portfolio-template-php .flexslider .print .entry-meta a,
+body[class*="print"].archive .flexslider .print .entry-meta a,
+.page-template-portfolio-page-php .flexslider .print:hover .entry-meta a,
+.project-navigation-wrapper .flexslider .print:hover .entry-meta a,
+.page-template-portfolio-template-php .flexslider .print:hover .entry-meta a,
+body[class*="print"].archive .flexslider .print:hover .entry-meta a {
+	color: rgba(255,255,255,0.7);
+}
+
+
+
+.project-navigation-wrapper .print,
+.page-template-portfolio-page-php .print,
+body[class*="print"].archive .print {
+  border: 0;
+  float: left;
+  margin-right: 2%;
+  width: 32%;
+}
+.project-navigation-wrapper .print:nth-of-type(3n),
+.page-template-portfolio-page-php .print:nth-of-type(3n),
+body[class*="print"].archive .print:nth-of-type(3n) {
+  clear: right;
+  margin-right: 0;
+}
+.project-navigation-wrapper .print:nth-of-type(3n+1),
+.page-template-portfolio-page-php .print:nth-of-type(3n+1),
+body[class*="print"].archive .print:nth-of-type(3n+1) {
+  clear: left;
+}
+
+.page-template-portfolio-page-php .featured-posts .print:nth-of-type(3n+1),
+.project-navigation-wrapper .more-projects .print:nth-of-type(3n),
+.project-navigation-wrapper .print:nth-of-type(3n+1) {
+  clear: none;
+}
+.project-navigation-wrapper .entry-thumbnail,
+.page-template-portfolio-page-php .entry-thumbnail,
+body[class*="print"].archive .entry-thumbnail {
+  height: 0;
+  overflow: hidden;
+  padding-top: 75%;
+  position: relative;
+}
+.project-navigation-wrapper .entry-thumbnail img,
+.page-template-portfolio-page-php .entry-thumbnail img,
+body[class*="print"].archive .entry-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.project-navigation-wrapper .entry-thumbnail.sketch-landscape,
+.page-template-portfolio-page-php .entry-thumbnail.sketch-landscape,
+body[class*="print"].archive .entry-thumbnail.sketch-landscape {
+  padding-top: 75%;
+}
+.project-navigation-wrapper .entry-thumbnail.sketch-portrait,
+.page-template-portfolio-page-php .entry-thumbnail.sketch-portrait,
+body[class*="print"].archive .entry-thumbnail.sketch-portrait {
+  padding-top: 133.333%;
+}
+.project-navigation-wrapper .entry-thumbnail.sketch-square,
+.page-template-portfolio-page-php .entry-thumbnail.sketch-square,
+body[class*="print"].archive .entry-thumbnail.sketch-square {
+  padding-top: 100%;
+}
+
+.project-navigation-wrapper li.next .print {
+  margin-right: 0;
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 50em) {
+	.print-shortcode .portfolio-entry {
+		width: 100% !important;
+	}
+}
+@media screen and (min-width: 60em) {
+
+  .page-template-portfolio-page-php .entry-thumbnail .edit-link a,
+  .project-navigation-wrapper .entry-thumbnail .edit-link a,
+  .page-template-portfolio-template-php .entry-thumbnail .edit-link a,
+  body[class*="print"].archive .entry-thumbnail .edit-link a {
+  	bottom: 14px;
+  	top: auto;
+  }
+}
