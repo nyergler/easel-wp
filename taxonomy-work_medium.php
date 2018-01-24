@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the Print archive page.
+ * The template for displaying a Work Medium archive.
  *
  * @package Sketch
  */
@@ -13,7 +13,10 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
             <header class="page-header">
-                <h1 class="page-title">Prints &raquo; <?php single_term_title(); ?></h1>
+                <h1 class="page-title">
+                    <a href="<?php wp_get_archives(array('post_type'=>'print', 'type'=>'postbypost', 'format'=>'custom')); ?>">Prints</a> &raquo; '
+                    <?php single_term_title(); ?>
+                </h1>
             </header>
 
             <div class="portfolio-entry-content">
