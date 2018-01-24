@@ -14,7 +14,7 @@ get_header(); ?>
 
             <header class="page-header">
                 <h1 class="page-title">
-                    <a href="<?php get_post_type_archive_link( 'print' ); ?>">Prints</a> &raquo;
+                    <a href="<?php echo get_post_type_archive_link( 'print' ); ?>">Prints</a> &raquo;
                     <?php single_term_title(); ?>
                 </h1>
             </header>
