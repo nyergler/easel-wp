@@ -22,8 +22,12 @@ get_header(); ?>
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php sketch_post_format(); ?>
-			<?php sketch_posted_on(); ?>
+			<ul>
+				<li><?php echo get_field('artist'); ?></li>
+				<li><?php echo get_field('year'); ?></li>
+				<li><?php echo get_field('medium'); ?></li>
+				<li><?php echo get_field('dimension'); ?></li>
+			</ul>
 			<?php edit_post_link( __( 'Edit', 'sketch' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
