@@ -13,11 +13,11 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
             <header class="page-header">
-                <h1 class="page-title"><?php echo get_option("prints_title", "Printz") ?></h1>
+                <h1 class="page-title"><?php echo get_option('prints_title', "Printz") ?></h1>
             </header>
 
             <div class="portfolio-entry-content">
-                <?php echo get_option("prints_content", "") ?>
+                <?php echo get_option('prints_content', "") ?>
             </div>
 
 			<?php /* Start the Loop */ ?>
