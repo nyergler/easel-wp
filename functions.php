@@ -53,4 +53,11 @@ function eazel_customize_register( $wp_customize ) {
     }
 add_action( 'customize_register', 'eazel_customize_register' );
 
+function eazel_print_posts_per_page( $query ) {
+    if ( !is_admin() && $query->is_main_query() && $query->is_post_type_archive('print') ) {
+        $query->set( 'posts_per_page', 12 );
+    }
+}
+add_action( 'pre_get_posts', 'eazel_print_posts_per_page' );
+
 ?>
