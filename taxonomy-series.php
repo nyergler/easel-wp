@@ -17,7 +17,7 @@ get_header(); ?>
             </header>
 
             <div class="portfolio-entry-content">
-                <?php echo get_option('prints_content', "") ?>
+				<?php echo term_description(); ?>
             </div>
 
 			<?php /* Start the Loop */ ?>
