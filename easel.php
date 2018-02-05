@@ -97,7 +97,9 @@ function easel_setup_meta_box() {
             'easel-prpos',           // Unique ID
             'Work Properties',  // Box title
             'easel_work_props_box',  // Content callback, must be of type callable
-            $screen                   // Post type
+            $screen,
+            'normal',
+            'high'
         );
     }
 }
