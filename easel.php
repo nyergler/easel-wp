@@ -91,7 +91,19 @@ function easel_deactivation() {
 register_deactivation_hook( __FILE__, 'easel_deactivation' );
 
 function easel_setup_meta_box() {
+    $screens = ['easel-work'];
+    foreach ($screens as $screen) {
+        add_meta_box(
+            'easel-prpos',           // Unique ID
+            'Work Properties',  // Box title
+            'easel_work_props_box',  // Content callback, must be of type callable
+            $screen                   // Post type
+        );
+    }
+}
 
+function easel_work_props_box() {
+    echo 'Hello, metabox';
 }
 
 function eazel_enqueue_styles() {
