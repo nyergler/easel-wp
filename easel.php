@@ -3,7 +3,7 @@
 Plugin Name:  Easel
 Plugin URI:   https://github.com/nyergler/easel
 Description:  Opinionated portfolio management for artists
-Version:      20180124
+Version:      20180205
 Author:       Nathan Yergler
 Author URI:   https://yergler.net
 License:      GPL3
@@ -17,14 +17,25 @@ function easel_setup_post_type() {
         'easel-work',
         [
             'label' => 'Easel Works',
+            'labels' => [
+
+            ],
+            'menu_icon' => plugins_url( 'assets/icon-32.png', __FILE__ ),
             'description' => 'Artistic works managed via Easel',
-            'public' => 'true',
-            'show_in_rest' => 'true',
+            'public' => true,
+            'show_in_rest' => true,
             'register_meta_box_cb' => 'easel_setup_meta_box',
-            'has_archive' => 'true',
-            'capabilities'
-            'supports'
-            'taxonomies'
+            'has_archive' => true,
+            'supports' => [
+                'title', 'editor', 'revisions', 'author', 'thumbnail',
+            ],
+            'taxonomies' => [
+                'easel-medium',
+                'easel-series',
+            ],
+            'rewrite' => [
+                'slug' => 'print',
+            ],
         ]
     );
 
@@ -32,12 +43,35 @@ function easel_setup_post_type() {
         'easel-medium',
         'easel-work',
         [
-            'public' => 'true',
-            'meta_box_cb'
-            'show_in_rest'
-            'description'
-            'labels'
-            'rewrite'
+            'public' => true,
+            // 'meta_box_cb'
+            'show_in_rest' => true,
+            'description' => 'Medium for Easel work',
+            'labels' => [
+                'name' => 'Work Medium',
+                'singular_name' => 'Work Medium',
+            ],
+            'rewrite' => [
+                'slug' => 'medium',
+            ],
+        ]
+    );
+
+
+    register_taxonomy(
+        'easel-series',
+        'easel-work',
+        [
+            'public' => true,
+            'show_in_rest' => true,
+            'description' => 'Work Series',
+            'labels' => [
+                'name' => 'Work Series',
+                'singular_name' => 'Work Series',
+            ],
+            'rewrite' => [
+                'slug' => 'series',
+            ],
         ]
     );
 }
