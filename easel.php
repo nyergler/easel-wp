@@ -10,103 +10,28 @@ License:      GPL3
 License URI:  https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain:  easel
 Domain Path:  /languages
+
+@package      Easel
 */
 
-function easel_setup_post_type() {
-    register_post_type(
-        'easel-work',
-        [
-            'label' => 'Easel Works',
-            'labels' => [
-
-            ],
-            'menu_icon' => plugins_url( 'assets/icon-32.png', __FILE__ ),
-            'description' => 'Artistic works managed via Easel',
-            'public' => true,
-            'show_in_rest' => true,
-            'register_meta_box_cb' => 'easel_setup_meta_box',
-            'has_archive' => true,
-            'supports' => [
-                'title', 'editor', 'revisions', 'author', 'thumbnail',
-            ],
-            'taxonomies' => [
-                'easel-medium',
-                'easel-series',
-            ],
-            'rewrite' => [
-                'slug' => 'print',
-            ],
-        ]
-    );
-
-    register_taxonomy(
-        'easel-medium',
-        'easel-work',
-        [
-            'public' => true,
-            // 'meta_box_cb'
-            'show_in_rest' => true,
-            'description' => 'Medium for Easel work',
-            'labels' => [
-                'name' => 'Work Medium',
-                'singular_name' => 'Work Medium',
-            ],
-            'rewrite' => [
-                'slug' => 'medium',
-            ],
-        ]
-    );
-
-
-    register_taxonomy(
-        'easel-series',
-        'easel-work',
-        [
-            'public' => true,
-            'show_in_rest' => true,
-            'description' => 'Work Series',
-            'labels' => [
-                'name' => 'Work Series',
-                'singular_name' => 'Work Series',
-            ],
-            'rewrite' => [
-                'slug' => 'series',
-            ],
-        ]
-    );
-}
-add_action( 'init', 'easel_setup_post_type' );
+require_once( __DIR__ . '/post-types/easel_work.php' );
+require_once( __DIR__ . '/taxonomies/easel_medium.php' );
+require_once( __DIR__ . '/taxonomies/easel_series.php' );
 
 function easel_install() {
-    easel_setup_post_type();
+    easel_work_init();
+    easel_medium_init();
+    easel_series_init();
+
     flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'easel_install' );
-
 
 function easel_deactivation() {
     unregister_post_type( 'easel-work' );
     flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'easel_deactivation' );
-
-function easel_setup_meta_box() {
-    $screens = ['easel-work'];
-    foreach ($screens as $screen) {
-        add_meta_box(
-            'easel-prpos',           // Unique ID
-            'Work Properties',  // Box title
-            'easel_work_props_box',  // Content callback, must be of type callable
-            $screen,
-            'normal',
-            'high'
-        );
-    }
-}
-
-function easel_work_props_box() {
-    echo 'Hello, metabox';
-}
 
 function eazel_enqueue_styles() {
 
