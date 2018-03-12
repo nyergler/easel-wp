@@ -88,6 +88,26 @@ function easel_work_updated_messages( $messages ) {
 }
 add_filter( 'post_updated_messages', 'easel_work_updated_messages' );
 
+function load_easel_work_template($template) {
+    // If 'single-easel_work.php' file in the user's theme doesn't exist, load it from the plugin directory.
+    if ( ! $template ) {
+        $template = plugin_dir_path( __FILE__ ) . '/templates/single-easel_work.php';
+    }
+
+    return $template;
+}
+add_filter('single-easel_work_template', 'load_easel_work_template');
+
+function load_easel_work_archive_template($template) {
+    // If 'archive-easel_work.php' file in the user's theme doesn't exist, load it from the plugin directory.
+    if ( ! $template ) {
+        $template = plugin_dir_path( __FILE__ ) . '/templates/archive-easel_work.php';
+    }
+
+    return $template;
+}
+add_filter('archive-easel_work_template', 'load_easel_work_archive_template');
+
 /**
  * Configure the metaboxes for Easel Works
  *
