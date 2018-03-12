@@ -129,3 +129,5 @@ function easel_setup_meta_box() {
 function easel_work_props_box() {
     echo 'Hello, metabox';
 }
+
+?>

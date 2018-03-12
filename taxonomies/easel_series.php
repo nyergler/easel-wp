@@ -84,3 +84,5 @@ function load_easel_series_template($template) {
     return $template;
 }
 add_filter('taxonomy-easel_series_template', 'load_easel_series_template');
+
+?>
