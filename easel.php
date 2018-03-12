@@ -17,6 +17,7 @@ Domain Path:  /languages
 require_once( __DIR__ . '/post-types/easel_work.php' );
 require_once( __DIR__ . '/taxonomies/easel_medium.php' );
 require_once( __DIR__ . '/taxonomies/easel_series.php' );
+require_once( __DIR__ . '/taxonomies/templates.php' );
 
 function easel_install() {
     easel_work_init();
@@ -35,7 +36,7 @@ register_deactivation_hook( __FILE__, 'easel_deactivation' );
 
 function eazel_enqueue_styles() {
 
-    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
+    // wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
     if ( is_post_type_archive( 'easel-work' ) || is_tax( 'easel-medium' ) || is_tax( 'easel-series' ) ) {
         wp_enqueue_style( 'eazel-style',
             get_stylesheet_directory_uri() . '/style.css'

@@ -2,7 +2,6 @@
 /**
  * The Template for displaying a single Print
  *
- * @package Sketch
  */
 
 get_header(); ?>

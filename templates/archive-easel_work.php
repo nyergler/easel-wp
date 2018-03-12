@@ -26,11 +26,11 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'content', 'print' ); ?>
+					<?php include(plugin_dir_path(__FILE__) . '/content-print.php'); ?>
 
 				<?php endwhile; ?>
 
-				<?php sketch_paging_nav(); ?>
+				<!-- <?php sketch_paging_nav(); ?> -->
 
 			</div><!-- .projects -->
 
