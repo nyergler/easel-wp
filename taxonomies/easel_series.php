@@ -74,3 +74,13 @@ function easel_series_updated_messages( $messages ) {
 	return $messages;
 }
 add_filter( 'term_updated_messages', 'easel_series_updated_messages' );
+
+function load_easel_series_template($template) {
+    // If 'taxonomy-easel_series.php' file in the user's theme doesn't exist, load it from the plugin directory.
+    if ( ! $template ) {
+        $template = plugin_dir_path( __FILE__ ) . '/templates/taxonomy-easel_series.php';
+    }
+
+    return $template;
+}
+add_filter('taxonomy-easel_series_template', 'load_easel_series_template');
