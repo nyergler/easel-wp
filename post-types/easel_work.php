@@ -120,21 +120,91 @@ add_filter('archive_template', 'load_easel_work_archive_template');
  *
  */
 function easel_setup_meta_box() {
-    $screens = ['easel-work'];
-    foreach ($screens as $screen) {
-        add_meta_box(
-            'easel-prpos',           // Unique ID
-            'Work Properties',  // Box title
-            'easel_work_props_box',  // Content callback, must be of type callable
-            $screen,
-            'normal',
-            'high'
-        );
-    }
+    $screen = 'easel_work';
+	add_meta_box(
+		'easel-props',
+		'Work Properties',
+		'easel_work_props_box',
+		$screen,
+		'side'
+	);
 }
 
-function easel_work_props_box() {
-    echo 'Hello, metabox';
+function easel_work_props_box($object) {
+    wp_nonce_field( basename( __FILE__ ), 'easel_work_nonce' );
+    $meta = get_post_meta( $object->ID );
+
+    // Get all theme taxonomy terms
+    $media = get_terms('easel_medium', 'hide_empty=0');
+	$series = get_terms('easel_series', 'hide_empty=0');
+	?>
+	<p>
+		<label for="easel_work_medium" class="easel-row-title"><?php _e( 'Medium', 'easel' )?></label>
+		<select name='easel_work_medium' id='easel_work_medium'>
+			<!-- Display media as options -->
+			<?php
+				$names = wp_get_object_terms($object->ID, 'easel_medium');
+			?>
+			<option class='easel_medium-option' value=''
+				<?php if (!count($names)) echo "selected";?>>None</option>
+			<?php
+			foreach ($media as $medium) {
+				if (!is_wp_error($names) && !empty($names) && !strcmp($medium->slug, $names[0]->slug))
+					echo "<option class='easel_medium-option' value='" . $medium->slug . "' selected>" . $medium->name . "</option>\n";
+				else
+					echo "<option class='easel_medium-option' value='" . $medium->slug . "'>" . $medium->name . "</option>\n";
+			}
+			?>
+		</select>
+	</p>
+	<p>
+		<label for="easel_work_series" class="easel-row-title"><?php _e( 'Series', 'easel' )?></label>
+		<select name='easel_work_series' id='easel_work_series'>
+			<!-- Display media as options -->
+			<?php
+				$names = wp_get_object_terms($object->ID, 'easel_series');
+			?>
+			<option class='easel_series-option' value=''
+				<?php if (!count($names)) echo "selected";?>>None</option>
+			<?php
+			foreach ($series as $s) {
+				if (!is_wp_error($names) && !empty($names) && !strcmp($s->slug, $names[0]->slug))
+					echo "<option class='easel_series-option' value='" . $s->slug . "' selected>" . $s->name . "</option>\n";
+				else
+					echo "<option class='easel_series-option' value='" . $s->slug . "'>" . $s->name . "</option>\n";
+			}
+			?>
+		</select>
+	</p>
+	<?php
 }
+
+function easel_work_save_meta( $post_id ) {
+
+    // Checks save status
+    $is_autosave = wp_is_post_autosave( $post_id );
+    $is_revision = wp_is_post_revision( $post_id );
+    $is_valid_nonce = ( isset( $_POST[ 'easel_work_nonce' ] ) && wp_verify_nonce( $_POST[ 'easel_work_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+
+    // Exits script depending on save status
+    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+		echo 'AIEEEE';
+        return;
+	}
+
+	echo ' XXX ', $_POST;
+
+    // Checks for input and sanitizes/saves if needed
+    if( isset( $_POST[ 'easel_work_medium' ] ) ) {
+		// XXX sanitize
+        wp_set_object_terms( $post_id, $_POST[ 'easel_work_medium' ], 'easel_medium' );
+    }
+
+    if( isset( $_POST[ 'easel_work_series' ] ) ) {
+		// XXX sanitize
+        wp_set_object_terms( $post_id, $_POST[ 'easel_work_series' ], 'easel_series' );
+    }
+}
+add_action( 'save_post', 'easel_work_save_meta' );
 
 ?>
