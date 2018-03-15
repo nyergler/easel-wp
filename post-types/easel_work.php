@@ -128,6 +128,10 @@ function easel_setup_meta_box() {
 		$screen,
 		'side'
 	);
+
+	// hide the stock metaboxes
+	remove_meta_box( 'tagsdiv-easel_medium', $screen, 'side' );
+	remove_meta_box( 'tagsdiv-easel_series', $screen, 'side' );
 }
 
 function easel_work_props_box($object) {

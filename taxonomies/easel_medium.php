@@ -10,7 +10,7 @@ function easel_medium_init() {
 		'public'            => true,
 		'show_in_nav_menus' => true,
 		'show_ui'           => true,
-		'show_admin_column' => false,
+		'show_admin_column' => true,
 		'query_var'         => true,
 		'rewrite'           => array(
 			'slug'			=> 'medium',
@@ -22,7 +22,7 @@ function easel_medium_init() {
 			'assign_terms'  => 'edit_posts',
 		),
 		'labels'            => array(
-			'name'                       => __( 'Media', 'easel' ),
+			'name'                       => __( 'Medium', 'easel' ),
 			'singular_name'              => _x( 'Medium', 'taxonomy general name', 'easel' ),
 			'search_items'               => __( 'Search Media', 'easel' ),
 			'popular_items'              => __( 'Popular Media', 'easel' ),
