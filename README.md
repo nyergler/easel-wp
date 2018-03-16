@@ -1,7 +1,15 @@
 # Easel
 
-I started out with a Sketch child theme, Advanced Custom Fields Pro, CPTUI-Extended. But after a while I realized that I didn't want to be tied to a single theme, and that everything I was doing was possible in a (hopefully simple) plugin. So here we are.
+Easel is an opinionated portfolio manager for WordPress. Easel makes it straight-forward to manage a portfolio of your work within WordPress and present them to visitors.
 
-## Why not use the Jetpack Portfolio?
+## Features
 
-Reasons, man. Reasons.
+* 💯 Image galleries for works
+* 💯 Organize works by series and medium
+* 🔜 Customizable URL structure
+* 🔜 Streamline blogging about work in progress
+* 🔜 Integrate with Woo Commerce
+
+## License
+
+Easel is licensed under the GPL v3 or later.
