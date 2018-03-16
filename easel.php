@@ -34,16 +34,16 @@ function easel_deactivation() {
 }
 register_deactivation_hook( __FILE__, 'easel_deactivation' );
 
-function eazel_enqueue_styles() {
+function easel_enqueue_styles() {
+    if ( get_post_type() == 'easel_work' || is_post_type_archive( 'easel_work' ) || is_tax( 'easel_medium' ) || is_tax( 'easel_series' ) ) {
+        $plugin_url = plugin_dir_url( __FILE__ );
 
-    // wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
-    if ( is_post_type_archive( 'easel-work' ) || is_tax( 'easel-medium' ) || is_tax( 'easel-series' ) ) {
-        wp_enqueue_style( 'eazel-style',
-            get_stylesheet_directory_uri() . '/style.css'
+        wp_enqueue_style( 'easel-style',
+            $plugin_url . 'style.css'
         );
     }
 }
-add_action( 'wp_enqueue_scripts', 'eazel_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'easel_enqueue_styles' );
 
 function easel_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'easel', array(
@@ -56,7 +56,7 @@ function easel_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'easel_title', array(
-        'default' => 'Art Portfolio',
+        'default' => 'Portfolio',
     ) );
     $wp_customize->add_control( 'easel_title', array(
         'section' => 'easel',
@@ -76,15 +76,15 @@ function easel_customize_register( $wp_customize ) {
     }
 add_action( 'customize_register', 'easel_customize_register' );
 
-function eazel_print_posts_per_page( $query ) {
+function easel_print_posts_per_page( $query ) {
     if ( !is_admin() && $query->is_main_query() && (
-            $query->is_post_type_archive('easel-work') ||
-            $query->is_tax('easel-series') ||
-            $query->is_tax('easel-medium')
+            $query->is_post_type_archive('easel_work') ||
+            $query->is_tax('easel_series') ||
+            $query->is_tax('easel_medium')
         ) ) {
         $query->set( 'posts_per_page', 12 );
     }
 }
-add_action( 'pre_get_posts', 'eazel_print_posts_per_page' );
+add_action( 'pre_get_posts', 'easel_print_posts_per_page' );
 
 ?>
