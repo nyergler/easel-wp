@@ -141,6 +141,8 @@ function easel_work_props_box($object) {
     // Get all theme taxonomy terms
     $media = get_terms('easel_medium', 'hide_empty=0');
 	$series = get_terms('easel_series', 'hide_empty=0');
+	$year = get_post_meta( $object->ID, 'easel_work-year', true);
+	$dimensions = get_post_meta( $object->ID, 'easel_work-dimensions', true);
 	?>
 	<p>
 		<label for="easel_work_medium" class="easel-row-title"><?php _e( 'Medium', 'easel' )?></label>
@@ -180,6 +182,14 @@ function easel_work_props_box($object) {
 			?>
 		</select>
 	</p>
+	<p>
+		<label for="easel_work_year" class="easel-row-title"><?php _e( 'Year', 'easel' )?></label>
+		<input name="easel_work_year" id="easel_work_year" value="<?php echo $year ?>" />
+	</p>
+	<p>
+		<label for="easel_work_dimensions" class="easel-row-title"><?php _e( 'Dimensions', 'easel' )?></label>
+		<input name="easel_work_dimensions" id="easel_work_dimensions" value="<?php echo $dimensions ?>" />
+	</p>
 	<?php
 }
 
@@ -207,7 +217,23 @@ function easel_work_save_meta( $post_id ) {
     if( isset( $_POST[ 'easel_work_series' ] ) ) {
 		// XXX sanitize
         wp_set_object_terms( $post_id, $_POST[ 'easel_work_series' ], 'easel_series' );
-    }
+	}
+
+	if( isset( $_POST['easel_work_year'] ) ) {
+		update_post_meta(
+			$post_id,
+			'easel_work-year',
+			$_POST['easel_work_year']
+		);
+	}
+
+	if( isset( $_POST['easel_work_dimensions'] ) ) {
+		update_post_meta(
+			$post_id,
+			'easel_work-dimensions',
+			$_POST['easel_work_dimensions']
+		);
+	}
 }
 add_action( 'save_post', 'easel_work_save_meta' );
 
