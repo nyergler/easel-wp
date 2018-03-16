@@ -2,6 +2,7 @@
 /**
  * The template for displaying a Work Medium archive.
  *
+ * @package Easel
  */
 
 get_header(); ?>

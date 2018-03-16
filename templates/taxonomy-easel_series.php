@@ -2,7 +2,7 @@
 /**
  * The template for displaying the Print archive page.
  *
- * @package Sketch
+ * @package Easel
  */
 
 get_header(); ?>

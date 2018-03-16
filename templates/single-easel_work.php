@@ -1,6 +1,6 @@
 <?php
 /**
- * The Template for displaying a single Print
+ * The Template for displaying a single Work
  *
  */
 
@@ -23,18 +23,15 @@ get_header(); ?>
 		<div class="entry-meta">
 			<ul>
 				<?php
-				function term_name($t)
-				{
-					return $t->name;
-				}
-
+				$easel_work_year = get_post_meta(get_the_ID(), 'easel_work-year', true);
+				$easel_work_dimensions = get_post_meta(get_the_ID(), 'easel_work-dimensions', true);
 				?>
-				<li><?php echo get_field('artist')['display_name']; ?></li>
-				<li><?php the_field('year'); ?></li>
-				<li><?php the_field('dimensions'); ?></li>
-				<li><?php echo join(', ', array_map(term_name, get_field('medium'))); ?></li>
+				<li><?php the_author() ?></li>
+				<li><?php echo $easel_work_year ?></li>
+				<li><?php echo $easel_work_dimensions ?></li>
+				<li><?php the_terms( get_the_ID(), 'easel_medium' ) ?></li>
 			</ul>
-			<?php edit_post_link( __( 'Edit', 'sketch' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
+			<?php edit_post_link( __( 'Edit', 'easel' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
@@ -42,7 +39,7 @@ get_header(); ?>
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'sketch' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'easel' ),
 				'after'  => '</div>',
 			) );
 		?>
@@ -51,11 +48,11 @@ get_header(); ?>
 	<footer class="entry-footer">
 		<?php
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( __( ', ', 'sketch' ) );
-			if ( $categories_list && sketch_categorized_blog() ) :
+			$categories_list = get_the_category_list( __( ', ', 'easel' ) );
+			if ( $categories_list ) :
 		?>
 		<span class="cat-links">
-			<?php printf( __( 'Posted in %1$s', 'sketch' ), $categories_list ); ?>
+			<?php printf( __( 'Posted in %1$s', 'easel' ), $categories_list ); ?>
 		</span>
 		<?php endif; // End if categories ?>
 		<?php
@@ -69,7 +66,7 @@ get_header(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 
-<?php sketch_post_nav(); ?>
+<?php the_post_navigation(); ?>
 
 <?php
     // If comments are open or we have at least one comment, load up the comment template
