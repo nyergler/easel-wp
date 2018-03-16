@@ -13,11 +13,11 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
             <header class="page-header">
-                <h1 class="page-title"><?php echo get_theme_mod('prints_title', "Prints") ?></h1>
+                <h1 class="page-title"><?php echo get_theme_mod('easel_title', "Portfolio") ?></h1>
             </header>
 
             <div class="portfolio-entry-content">
-                <?php echo get_theme_mod('prints_content', "") ?>
+                <?php echo get_theme_mod('easel_intro_content', "") ?>
             </div>
 
 			<?php /* Start the Loop */ ?>

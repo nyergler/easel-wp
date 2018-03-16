@@ -45,41 +45,36 @@ function eazel_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'eazel_enqueue_styles' );
 
-// function eazel_post_formats(){
-//     add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'status', 'image', 'quote' ) );
-// }
-// add_action( 'after_setup_theme', 'eazel_post_formats', 11 );
-
-function eazel_customize_register( $wp_customize ) {
-    $wp_customize->add_section( 'prints', array(
-        'title' => __( 'Prints' ),
-        'description' => __( 'Customize the Print archives here' ),
-        'panel' => '', // Not typically needed.
+function easel_customize_register( $wp_customize ) {
+    $wp_customize->add_section( 'easel', array(
+        'title' => __( 'Easel' ),
+        'description' => __( 'Customize the Easel archives here' ),
+        'panel' => '',
         'priority' => 160,
         'capability' => 'edit_theme_options',
-        'theme_supports' => '', // Rarely needed.
+        'theme_supports' => '',
     ) );
 
-    $wp_customize->add_setting( 'prints_title', array(
-        'default' => 'Prints',
+    $wp_customize->add_setting( 'easel_title', array(
+        'default' => 'Art Portfolio',
     ) );
-    $wp_customize->add_control( 'prints_title', array(
-        'section' => 'prints',
-        'label' => __( 'Archive Title' ),
-        'description' => __( 'Page title for Print Archive page(s)' ),
+    $wp_customize->add_control( 'easel_title', array(
+        'section' => 'easel',
+        'label' => __( 'Portfolio Title' ),
+        'description' => __( 'Page title for Work archive page(s)' ),
       ) );
 
-    $wp_customize->add_setting( 'prints_content', array(
+    $wp_customize->add_setting( 'easel_intro_content', array(
         'default' => '',
     ) );
-    $wp_customize->add_control( 'prints_content', array(
-        'section' => 'prints',
-        'label' => __( 'Archive Content' ),
-        'description' => __( 'Page content for Print Archive page.' ),
+    $wp_customize->add_control( 'easel_intro_content', array(
+        'section' => 'easel',
+        'label' => __( 'Portfolio Intro Content' ),
+        'description' => __( 'Page content for Work archive page.' ),
         'type' => 'textarea',
     ) );
     }
-add_action( 'customize_register', 'eazel_customize_register' );
+add_action( 'customize_register', 'easel_customize_register' );
 
 function eazel_print_posts_per_page( $query ) {
     if ( !is_admin() && $query->is_main_query() && (
