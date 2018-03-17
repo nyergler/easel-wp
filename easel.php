@@ -87,4 +87,56 @@ function easel_print_posts_per_page( $query ) {
 }
 add_action( 'pre_get_posts', 'easel_print_posts_per_page' );
 
+function easel_settings_init()
+{
+    register_setting('reading', 'easel_archive_prefix');
+    add_settings_section(
+        'easel_settings_section',
+        'Easel Settings',
+        'easel_settings_section_cb',
+        'reading'
+    );
+    add_settings_field(
+        'easel_archive_prefix',
+        'Archive Prefix',
+        'easel_archive_prefix_field_cb',
+        'reading',
+        'easel_settings_section'
+    );
+}
+
+/**
+ * register easel_settings_init to the admin_init action hook
+ */
+add_action( 'admin_init', 'easel_settings_init' );
+
+/**
+ * callback functions
+ */
+function easel_settings_section_cb()
+{
+    echo '<p>Configure display of your Easel portfolio.</p>';
+}
+
+function easel_archive_prefix_field_cb()
+{
+    $setting = get_option('easel_archive_prefix');
+    ?>
+    <input type="text" id="easel_archive_prefix" name="easel_archive_prefix" value="<?php echo isset( $setting ) ? esc_attr( $setting ) : ''; ?>">
+    <p class="description" id="easel_archive_prefix-description">
+        Customize the archive prefix for your portfolio. This setting will be
+        inserted after the archive prefix.
+    </p>
+    <?php
+}
+
+add_action( 'update_option_easel_archive_prefix', 'easel_archive_prefix_updated' );
+
+function easel_archive_prefix_updated( $old_value, $value ) {
+    // re-register the post type so the rewrite prefix is updated
+    easel_work_init();
+
+    // flush the rewrite rules
+    flush_rewrite_rules();
+}
 ?>

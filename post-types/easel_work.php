@@ -4,6 +4,15 @@
  * Registers the `easel_work` post type.
  */
 function easel_work_init() {
+	$rewrite = true;
+	$portfolio_prefix = get_option('easel_archive_prefix');
+
+	if ( $portfolio_prefix ) {
+		$rewrite = array(
+			'slug' => $portfolio_prefix,
+		);
+	}
+
 	register_post_type( 'easel_work', array(
 		'labels'                => array(
 			'name'                  => __( 'Works', 'easel' ),
@@ -38,11 +47,9 @@ function easel_work_init() {
 		'show_in_nav_menus'     => true,
 		'supports'              => array( 'title', 'editor', 'revisions', 'author', 'thumbnail' ),
 		'has_archive'           => true,
-		'rewrite'               => array(
-			'slug'				=> 'print',
-		),
+		'rewrite'               => $rewrite,
 		'query_var'             => true,
-		'menu_icon' => plugins_url( 'assets/icon-32.png', __FILE__ ),
+		'menu_icon' => plugins_url( '../assets/icon-32.png', __FILE__ ),
 		'show_in_rest'          => true,
 		'rest_base'             => 'easel_work',
 		'rest_controller_class' => 'WP_REST_Posts_Controller',
