@@ -2,7 +2,7 @@
 /*
 Plugin Name:  Easel
 Plugin URI:   https://github.com/nyergler/easel
-Description:  Opinionated portfolio management for artists
+Description:  Opinionated portfolio management for artists.
 Version:      20180205
 Author:       Nathan Yergler
 Author URI:   https://yergler.net
@@ -35,8 +35,14 @@ function easel_deactivation() {
 register_deactivation_hook( __FILE__, 'easel_deactivation' );
 
 function easel_enqueue_styles() {
+    $plugin_url = plugin_dir_url( __FILE__ );
+
+    if ( is_admin() ) {
+        wp_enqueue_style( 'easel-admin-style',
+            $plugin_url . 'admin-style.css'
+        );
+    }
     if ( get_post_type() == 'easel_work' || is_post_type_archive( 'easel_work' ) || is_tax( 'easel_medium' ) || is_tax( 'easel_series' ) ) {
-        $plugin_url = plugin_dir_url( __FILE__ );
 
         wp_enqueue_style( 'easel-style',
             $plugin_url . 'style.css'
@@ -44,6 +50,7 @@ function easel_enqueue_styles() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'easel_enqueue_styles' );
+add_action( 'admin_enqueue_scripts', 'easel_enqueue_styles' );
 
 function easel_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'easel', array(
