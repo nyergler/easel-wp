@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the Print archive page.
+ * The template for displaying the Work archive page.
  *
  * @package Easel
  */
