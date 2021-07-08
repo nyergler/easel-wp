@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying the Print archive page.
+ * The template for displaying the Work archive page.
  *
- * @package Sketch
+ * @package Easel
  */
 
 get_header(); ?>
@@ -13,11 +13,11 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
             <header class="page-header">
-                <h1 class="page-title"><?php echo get_theme_mod('prints_title', "Prints") ?></h1>
+                <h1 class="page-title"><?php echo get_theme_mod('easel_title', "Portfolio") ?></h1>
             </header>
 
             <div class="portfolio-entry-content">
-                <?php echo get_theme_mod('prints_content', "") ?>
+                <?php echo get_theme_mod('easel_intro_content', "") ?>
             </div>
 
 			<?php /* Start the Loop */ ?>
@@ -26,11 +26,11 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'content', 'print' ); ?>
+					<?php include(plugin_dir_path(__FILE__) . '/content-print.php'); ?>
 
 				<?php endwhile; ?>
 
-				<?php sketch_paging_nav(); ?>
+				<!-- <?php sketch_paging_nav(); ?> -->
 
 			</div><!-- .projects -->
 
